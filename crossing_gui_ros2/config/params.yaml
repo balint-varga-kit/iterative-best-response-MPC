@@ -1,0 +1,108 @@
+# LOAD AND PARSE THIS FILE WITHIN LAUNCH FILE
+# For further information, read the README.md
+
+# Global Parameters:
+vehicle_initial_x:        &shared_vehicle_initial_x       5.0 # [m]
+vehicle_initial_y:        &shared_vehicle_initial_y       10.0 # [m]
+vehicle_initial_x_speed:  &shared_vehicle_initial_x_speed 1.0  # [m/s]
+vehicle_initial_y_speed:  &shared_vehicle_initial_y_speed 0.0  # [m/s]
+vehicle_length:           &shared_vehicle_length          4.5  # [m]
+vehicle_collision_radius: &shared_vehicle_collision_radius 3.0 # [m]
+
+pedestrian_initial_x: &shared_pedestrian_initial_x 40.0 # [m]
+pedestrian_initial_y: &shared_pedestrian_initial_y 17.0 # [m]
+pedestrian_personal_space_radius: &shared_pedestrian_personal_space_radius 0.5 # [m]
+
+
+
+pedestrian_crossing_x: &shared_pedestrian_crossing_x 40.0 # [m]
+road_y: &shared_road_y 10.0 # [m]
+
+# Node specific parameters:
+
+simulation_gui_node:
+  ros__parameters:
+    window_width: 60.0 # [m]
+    window_height: 20.0 # [m]
+    pixel_per_meter: 35.0 # [pixel]
+    getlogger_enable_gui: False # False: no logging on console
+
+    pedestrian_crossing_x:    *shared_pedestrian_crossing_x
+    road_y:                   *shared_road_y
+
+    vehicle_initial_x:        *shared_vehicle_initial_x
+    vehicle_initial_y:        *shared_vehicle_initial_y
+    vehicle_initial_x_speed:  *shared_vehicle_initial_x_speed
+    vehicle_initial_y_speed:  *shared_vehicle_initial_y_speed
+    vehicle_length:           *shared_vehicle_length
+    vehicle_collision_radius: *shared_vehicle_collision_radius
+
+    pedestrian_initial_x:     *shared_pedestrian_initial_x
+    pedestrian_initial_y:     *shared_pedestrian_initial_y
+    pedestrian_personal_space_radius: *shared_pedestrian_personal_space_radius
+    pedestrian_size: 0.6 # [m] basically the width of a pedestrian in top view
+
+simulation_node:
+  ros__parameters:
+    getlogger_enable_gui: False # False: no logging on console
+
+    vehicle_initial_x:        *shared_vehicle_initial_x
+    vehicle_initial_y:        *shared_vehicle_initial_y
+    vehicle_initial_x_speed:  *shared_vehicle_initial_x_speed
+    vehicle_initial_y_speed:  *shared_vehicle_initial_y_speed
+    vehicle_length:           *shared_vehicle_length
+
+    pedestrian_initial_x:     *shared_pedestrian_initial_x
+    pedestrian_initial_y:     *shared_pedestrian_initial_y
+
+    pedestrian_crossing_x:    *shared_pedestrian_crossing_x
+    road_y:                   *shared_road_y
+
+
+control_pedestrian_node:
+  ros__parameters:
+    pedestrian_initial_x: *shared_pedestrian_initial_x
+    pedestrian_initial_y: *shared_pedestrian_initial_y
+    getlogger_enable_pedcontrol: False
+
+    pedestrian_crossing_x:    *shared_pedestrian_crossing_x
+    road_y:                   *shared_road_y
+
+control_vehicle_node:
+  ros__parameters:
+    getlogger_enable_vehcontrol: False
+    vehicle_initial_x:        *shared_vehicle_initial_x
+    vehicle_initial_y:        *shared_vehicle_initial_y
+    vehicle_initial_x_speed:  *shared_vehicle_initial_x_speed
+    vehicle_initial_y_speed:  *shared_vehicle_initial_y_speed
+    vehicle_collision_radius: *shared_vehicle_collision_radius
+
+    pedestrian_crossing_x:    *shared_pedestrian_crossing_x
+    road_y:                   *shared_road_y
+
+    pedestrian_personal_space_radius: *shared_pedestrian_personal_space_radius
+
+log_node:
+  ros__parameters:
+    
+
+
+# Example for all the ROS2 parameter types:
+#your_amazing_node:
+#  ros__parameters:
+#    bool_value: True
+#    int_number: 5
+#    float_number: 3.14
+#    str_text: "Hello Universe"
+#    bool_array: [True, False, True]
+#    int_array: [10, 11, 12, 13]
+#    float_array: [7.5, 400.4]
+#    str_array: ['Nice', 'more', 'params']
+#    bytes_array: [0x01, 0xF1, 0xA2]
+#    nested_param:
+#      another_int: 7
+
+
+# control_pedestrian_social_force_model_2_node:
+#   ros__parameters:
+#     getlogger_enable_pedcontrol: False

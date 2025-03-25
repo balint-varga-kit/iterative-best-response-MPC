@@ -1,0 +1,9 @@
+# service definition for the GUI node.
+# GetGuiParam.srv
+
+# This service takes the name of a parameter of the GUI node
+# and responds with the value of this parameter.
+
+string param_name
+---
+float64 param_value

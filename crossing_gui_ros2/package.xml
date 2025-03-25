@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>crossing_gui_ros2</name>
+  <version>0.0.0</version>
+  <!-- maintainer, email, description and license should be the same as in package.xml
+       Reason:
+       The files have different purposes, package.xml is for ROS-specific tools, setup.py is for Python package management. -->
+  <description>Simulation of the pedestrian crossing scenario in urxel master thesis.</description>
+  <maintainer email="urxel@student.kit.edu">bogdan</maintainer>
+  <license>Apache 2.0</license>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>crossing_gui_ros2_interfaces</exec_depend>
+  <exec_depend>decision_making_interface</exec_depend>
+  <exec_depend>decision_making_package</exec_depend>
+
+  <!-- https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Creating-Launch-Files.html -->
+  <exec_depend>ros2launch</exec_depend>
+
+  <!-- Comment -->
+
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
