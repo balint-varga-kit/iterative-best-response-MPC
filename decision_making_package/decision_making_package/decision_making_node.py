@@ -88,10 +88,16 @@ class DecisionMakingNode(Node):
 
         self.is_there_a_pedestrian = False
 
+        self.optimization_type = "joint_nlp"
+        # Set optimization_mode: "iterative", "joint_nlp", or "joint_qp" as ROS parameter:
+        
+        #self.declare_parameter("optimization_mode", "joint_nlp")
+        #self.optimization_type = self.get_parameter("optimization_mode").get_parameter_value().string_value
+
         self.simple_cruise_controller = SimpleCruiseController()
         self.optimization_based_controller = OptimizationBasedController(
-            self.get_logger
-        )
+            self.get_logger, TIMER_PERIOD, PREDICTION_HORIZON,  self.optimization_type
+        ) 
 
     def pedestrian_intention_state_list_callback(
         self, ped_list: PedestrianIntentionStateList
