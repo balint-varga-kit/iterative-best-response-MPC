@@ -48,7 +48,7 @@ class OptimizationBasedController:
                 vehicle_ctrl_dim=1,
                 ped_state_dim=4,
                 ped_ctrl_dim=2,
-                D_safe=self.vehicle_collision_radius
+                D_safe=self.vehicle_collision_radius+self.pedestrian_personal_space_radius
             )
             # For backward compatibility, assign joint optimizer to vehicle_optimization.
             self.vehicle_optimization = self.joint_optimization
